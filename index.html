@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Art Vault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Personal Art Vault</h1>
+    <p>A quiet corner for my sketches and finished pieces.</p>
+  </header>
+
+  <!-- Gallery Grid -->
+  <main class="gallery">
+
+    <!-- Piece 1 Thumbnail -->
+    <a href="#art1" class="art-card">
+      <img src="drawings/Sukuna.jpeg" alt="Artwork 1" loading="lazy" />
+      <div class="caption">Sukuna</div>
+    </a>
+
+    <!-- Piece 2 Thumbnail -->
+    <a href="#art2" class="art-card">
+      <img src="drawings/ichigo.jpg" alt="Artwork 2" loading="lazy" />
+      <div class="caption">Ichigo</div>
+    </a>
+
+  </main>
+
+  <!-- Lightbox Overlays (Hidden until clicked) -->
+
+  <!-- Modal for Art 1 -->
+  <div id="art1" class="lightbox">
+    <a href="#" class="lightbox-backdrop"></a>
+    <div class="lightbox-content">
+      <a href="#" class="close-btn">&times;</a>
+      <img src="drawings/Sukuna.jpeg" alt="Artwork 1 Full" />
+      <div class="lightbox-info">
+        <h2>Sukuna</h2>
+        <span class="date">9th March 2024</span>
+        <p>This was the first time I realised that drawing is actually fun</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Art 2 -->
+  <div id="art2" class="lightbox">
+    <a href="#" class="lightbox-backdrop"></a>
+    <div class="lightbox-content">
+      <a href="#" class="close-btn">&times;</a>
+      <img src="drawings/ichigo.jpg" alt="Artwork 2 Full" />
+      <div class="lightbox-info">
+        <h2>Ichigo</h2>
+        <span class="date">31 march 2024</span>
+        <p>For some reason for this drawing I got some godlike skill that I havn't been able to replicate</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

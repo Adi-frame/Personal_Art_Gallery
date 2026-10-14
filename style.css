@@ -1,0 +1,195 @@
+/* =========================================================
+   1. GLOBAL PAGE SETTINGS
+   These styles set the base background color and font.
+   ========================================================= */
+
+* {
+  box-sizing: border-box; /* Makes width calculations include padding */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121212; /* Dark background */
+  color: #ffffff;            /* Default white text */
+  font-family: sans-serif;   /* Clean, standard font */
+  padding: 30px 20px;        /* Space around the edges of the screen */
+}
+
+/* =========================================================
+   2. HEADER
+   The title and subtitle at the top of your page.
+   ========================================================= */
+
+header {
+  text-align: center;
+  margin-bottom: 40px;       /* Pushes the gallery down away from the header */
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #888888;            /* Dim gray color for subtitle */
+  font-size: 15px;
+}
+
+/* =========================================================
+   3. THE GALLERY GRID
+   Splits your page into side-by-side columns.
+   ========================================================= */
+
+.gallery {
+  column-count: 3;           /* 3 columns on wide computer screens */
+  column-gap: 20px;          /* Space between the columns */
+  max-width: 1100px;         /* Prevents the gallery from getting too wide */
+  margin: 0 auto;            /* Centers the entire gallery on the screen */
+}
+
+/* When the screen is smaller than 800px (tablets / small windows): switch to 2 columns */
+@media (max-width: 800px) {
+  .gallery {
+    column-count: 2;
+  }
+}
+
+/* When the screen is smaller than 500px (phones): switch to 1 column */
+@media (max-width: 500px) {
+  .gallery {
+    column-count: 1;
+  }
+}
+
+/* =========================================================
+   4. ARTWORK CARDS & HOVER EFFECT
+   Each clickable art thumbnail in the grid.
+   ========================================================= */
+
+.art-card {
+  display: block;            /* Makes the link wrap neatly around the card */
+  text-decoration: none;     /* Removes the blue underline from links */
+  break-inside: avoid;       /* Prevents images from splitting across columns */
+  margin-bottom: 20px;       /* Space below each card */
+  background-color: #1e1e1e; /* Slightly lighter dark gray for the card box */
+  border-radius: 8px;        /* Rounds the card corners */
+  overflow: hidden;          /* Keeps image corners rounded with the card */
+  border: 1px solid #2a2a2a; /* Subtle gray outline */
+
+  /* TRANSITION:
+     Tells the browser: "When any change happens (like hover), 
+     animate it smoothly over 0.2 seconds instead of snapping instantly." */
+  transition: transform 0.2s ease;
+}
+
+/* HOVER EFFECT:
+   :hover means "apply these styles ONLY when the mouse points at this card." */
+.art-card:hover {
+  /* translateY(-4px) slides the card UP by 4 pixels, giving a floating feel.
+     Change -4px to 0px if you want it to stay completely still. */
+  transform: translateY(-4px);
+  
+  /* Brightens the border outline slightly when hovered */
+  border-color: #555555;
+}
+
+.art-card img {
+  width: 100%;               /* Image expands to fill the card completely */
+  height: auto;              /* Keeps image proportions intact (no stretching) */
+  display: block;            /* Removes awkward default gap below images */
+}
+
+.caption {
+  padding: 10px 14px;        /* Inner breathing room for text */
+  font-size: 14px;
+  color: #cccccc;            /* Soft light gray text */
+}
+
+/* =========================================================
+   5. POPUP / LIGHTBOX (When clicked)
+   ========================================================= */
+
+/* The background overlay covering the whole screen */
+.lightbox {
+  display: none;             /* Hides the popup completely by default */
+  position: fixed;           /* Sticks to screen even if you scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;              /* Places it on top of everything else */
+  align-items: center;       /* Centers popup box vertically */
+  justify-content: center;   /* Centers popup box horizontally */
+}
+
+/* :target means "if the card link #art1 was clicked, show this popup" */
+.lightbox:target {
+  display: flex;             /* Turns display ON */
+}
+
+/* The dark shaded sheet behind the popup box */
+.lightbox-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* 85% transparent black */
+}
+
+/* The actual box showing the large image and description */
+.lightbox-content {
+  position: relative;        /* Sits above the dark backdrop */
+  z-index: 10;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  max-width: 850px;
+  width: 90%;
+  max-height: 85vh;          /* Caps height to 85% of screen height */
+  display: flex;             /* Places image on left, text on right */
+  overflow: hidden;
+}
+
+/* The full image inside the popup */
+.lightbox-content img {
+  max-width: 60%;            /* Image takes 60% of the popup width */
+  max-height: 85vh;
+  object-fit: contain;       /* Fits image without clipping */
+  background-color: #0a0a0a;
+}
+
+/* Text area beside the full image */
+.lightbox-info {
+  padding: 24px;
+  flex: 1;                   /* Uses the remaining space */
+}
+
+.lightbox-info h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.lightbox-info .date {
+  font-size: 13px;
+  color: #777777;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.lightbox-info p {
+  color: #dddddd;
+  line-height: 1.5;          /* Space between lines of text */
+  font-size: 14px;
+}
+
+/* The 'X' button to close the popup */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  color: #ffffff;
+  font-size: 26px;
+  text-decoration: none;     /* Removes link underline */
+  z-index: 20;
+}
